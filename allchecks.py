@@ -12,9 +12,9 @@ def check_reboot():
     return os.path.exists("/run/reboot-required")
 
 
-def check_disk_full(diskpath, min_gb, min_percent):
+def check_disk_full(path, min_gb, min_percent):
     """Returns True if there isn't enough disk space"""
-    disk_usage = shutil.disk_usage(diskpath)
+    disk_usage = shutil.disk_usage(path)
     # calculate free disk percent
     percent_free = (100 * disk_usage.free) / disk_usage.total
     # convert free disk space to
@@ -25,7 +25,7 @@ def check_disk_full(diskpath, min_gb, min_percent):
 
 
 def check_full_root():
-    return check_disk_full(diskpath="/", min_gb=2, min_percent=10)
+    return check_disk_full(path="/", min_gb=2, min_percent=10)
 
 
 def check_no_network():
