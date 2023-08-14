@@ -52,6 +52,10 @@ def main():
         print("CPU usage high")
         sys.exit(1)
 
+    if check_no_network():
+        print("No network")
+        sys.exit(1)
+
     print("Everything OK!")
     sys.exit(0)
 
