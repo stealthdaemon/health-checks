@@ -3,6 +3,7 @@
 import os
 import sys
 import shutil
+import psutil
 
 
 def check_reboot():
@@ -27,7 +28,9 @@ def check_no_network():
 
 
 def check_cpu_constrained():
-    pass
+    """returns True if cpu usage < 75, false if it isn't"""
+    cpu_usage = psutil.cpu_percent(1)
+    return cpu_usage < 75
 
 
 def main():
