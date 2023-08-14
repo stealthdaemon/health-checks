@@ -42,6 +42,10 @@ def main():
         print("Disk full")
         sys.exit(1)
 
+    if check_cpu_constrained():
+        print("CPU usage high")
+        sys.exit(1)
+
     print("Everything OK!")
     sys.exit(0)
 
