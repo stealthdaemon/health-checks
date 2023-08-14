@@ -46,20 +46,22 @@ def check_cpu_constrained():
 
 
 def main():
-    if check_reboot():
-        print("Pending Reboot.")
-        sys.exit(1)
+    # refactor code
+    checks = [
+        (check_reboot, "Pending Reboot."),
+        (check_full_root, "Disk full"),
+        (check_cpu_constrained, "CPU usage high"),
+        (check_no_network, "No network"),
+    ]
 
-    if check_full_root():
-        print("Disk full")
-        sys.exit(1)
+    status = False
 
-    if check_cpu_constrained():
-        print("CPU usage high")
-        sys.exit(1)
+    for function, message in checks:
+        if function():
+            print(message)
+            status = True
 
-    if check_no_network():
-        print("No network")
+    if status:
         sys.exit(1)
 
     print("Everything OK!")
