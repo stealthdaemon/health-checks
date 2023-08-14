@@ -24,6 +24,10 @@ def check_disk_full(disk, min_gb, min_percent):
     return False
 
 
+def check_full_root():
+    return check_disk_full(disk="/", min_absolute=2, min_percent=10)
+
+
 def check_no_network():
     """Check network status"""
     try:
@@ -46,7 +50,7 @@ def main():
         print("Pending Reboot.")
         sys.exit(1)
 
-    if check_disk_full("/", 2, 10):
+    if check_full_root():
         print("Disk full")
         sys.exit(1)
 
