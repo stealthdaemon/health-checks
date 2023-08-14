@@ -4,6 +4,7 @@ import os
 import sys
 import shutil
 import psutil
+import socket
 
 
 def check_reboot():
@@ -24,7 +25,12 @@ def check_disk_full(disk, min_absolute, min_percent):
 
 
 def check_no_network():
-    pass
+    """Check network status"""
+    try:
+        socket.gethostbyname("www.google.com")
+        return False
+    except socket.gaierror:
+        return True
 
 
 def check_cpu_constrained():
