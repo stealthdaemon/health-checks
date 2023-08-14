@@ -25,7 +25,7 @@ def check_disk_full(disk, min_gb, min_percent):
 
 
 def check_full_root():
-    return check_disk_full(disk="/", min_absolute=2, min_percent=10)
+    return check_disk_full(disk="/", min_gb=2, min_percent=10)
 
 
 def check_no_network():
