@@ -7,7 +7,7 @@ import shutil
 
 def check_reboot():
     """Return True if reboot is scheduled, False if none"""
-    return os.path.exists("run/reboot-required")
+    return os.path.exists("/run/reboot-required")
 
 
 def check_disk_full(disk, min_absolute, min_percent):
