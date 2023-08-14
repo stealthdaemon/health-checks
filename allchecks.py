@@ -36,7 +36,9 @@ def check_no_network():
 def check_cpu_constrained():
     """returns True if cpu usage < 75, false if it isn't"""
     cpu_usage = psutil.cpu_percent(1)
-    return cpu_usage < 75
+    if cpu_usage < 75:
+        return False
+    return True
 
 
 def main():
